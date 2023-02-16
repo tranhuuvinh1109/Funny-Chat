@@ -1,17 +1,16 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 
-import 'firebase/analytics';
+import 'firebase/compat/analytics';
 import 'firebase/auth';
-import 'firebase/firestore';
+import 'firebase/compat/firestore';
 
 var firebaseConfig = {
-  apiKey: 'AIzaSyBRpDZ63mVfrzmzTjHFjRssP4cOvw_jc04',
-  authDomain: 'chat-app-c975a.firebaseapp.com',
-  projectId: 'chat-app-c975a',
-  storageBucket: 'chat-app-c975a.appspot.com',
-  messagingSenderId: '942648297216',
-  appId: '1:942648297216:web:d8c4321ba778c8808f95e5',
-  measurementId: 'G-01WLMKYFFM',
+  apiKey: "AIzaSyCnUCL0hdgPH8JsrgC6ug1BsISbEn91uC4",
+  authDomain: "funny-chat-c8aa5.firebaseapp.com",
+  projectId: "funny-chat-c8aa5",
+  storageBucket: "funny-chat-c8aa5.appspot.com",
+  messagingSenderId: "1015650339384",
+  appId: "1:1015650339384:web:29969d2d7afd90d713b4cd"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
