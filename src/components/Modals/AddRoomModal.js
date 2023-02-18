@@ -4,7 +4,7 @@ import { AppContext } from '../../Context/AppProvider';
 import { addDocument } from '../../firebase/services';
 import { AuthContext } from '../../Context/AuthProvider';
 
-export default function AddRoomModal() {
+export default function AddRoomModal () {
   const { isAddRoomVisible, setIsAddRoomVisible } = useContext(AppContext);
   const {
     user: { uid },
@@ -32,17 +32,17 @@ export default function AddRoomModal() {
   return (
     <div>
       <Modal
-        title='Tạo phòng'
+        title='Creat new room'
         visible={isAddRoomVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
         <Form form={form} layout='vertical'>
-          <Form.Item label='Tên phòng' name='name'>
-            <Input placeholder='Nhập tên phòng' />
+          <Form.Item label='Room name' name='name'>
+            <Input placeholder='Enter room name' />
           </Form.Item>
-          <Form.Item label='Mô tả' name='description'>
-            <Input.TextArea placeholder='Nhập mô tả' />
+          <Form.Item label='Description' name='description'>
+            <Input.TextArea placeholder='Enter Description' />
           </Form.Item>
         </Form>
       </Modal>

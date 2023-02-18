@@ -1,0 +1,94 @@
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	--c: rgb(226, 223, 216);
+	color: var(--c);
+	font-size: 12px;
+	border: 0.3em solid var(--c);
+	border-radius: 0.5em;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: sans-serif;
+	letter-spacing: 0.1em;
+	text-align: center;
+	line-height: 1.5em;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	transition: 0.5s;
+	margin: 1em;
+}
+
+nav ul li span {
+	position: absolute;
+	width: 25%;
+	height: 100%;
+	background-color: var(--c);
+	transform: translateY(150%);
+	border-radius: 50%;
+	left: calc((var(--n) - 1) * 25%);
+	transition: 0.5s;
+	transition-delay: calc((var(--n) - 1) * 0.1s);
+	z-index: -1;
+}
+
+nav ul li:hover {
+	color: black;
+	cursor: pointer;
+}
+
+nav ul li:hover span {
+	transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+	--n: 1;
+}
+
+nav ul li span:nth-child(2) {
+	--n: 2;
+}
+
+nav ul li span:nth-child(3) {
+	--n: 3;
+}
+
+nav ul li span:nth-child(4) {
+	--n: 4;
+}
+.add-room i {
+	margin-right: 4px;
+}
+.add-room {
+	width: 200px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	margin: 20px;
+	padding: 8px 0;
+	text-align:center;
+	border: none;
+	background-size: 300% 100%;
+
+	border-radius: 50px;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
+
+.add-room:hover {
+	background-position: 100% 0;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.add-room:focus {
+	outline: none;
+}

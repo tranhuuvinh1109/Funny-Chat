@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import useFirestore from '../hooks/useFirestore';
+import useFirestoreCollection from '../hooks/useFirestoreCollection';
 import { AuthContext } from './AuthProvider';
 
 export const AppContext = React.createContext();
 
-export default function AppProvider({ children }) {
+export default function AppProvider ({ children }) {
   const [isAddRoomVisible, setIsAddRoomVisible] = useState(false);
   const [isInviteMemberVisible, setIsInviteMemberVisible] = useState(false);
   const [selectedRoomId, setSelectedRoomId] = useState('');
@@ -21,10 +21,13 @@ export default function AppProvider({ children }) {
     };
   }, [uid]);
 
-  const rooms = useFirestore('rooms', roomsCondition);
+  const rooms = useFirestoreCollection('rooms', roomsCondition);
 
   const selectedRoom = React.useMemo(
-    () => rooms.find((room) => room.id === selectedRoomId) || {},
+    () => {
+      console.log('select', rooms.find((room) => room.id === selectedRoomId))
+      return rooms.find((room) => room.id === selectedRoomId) || {}
+    },
     [rooms, selectedRoomId]
   );
 
@@ -36,7 +39,7 @@ export default function AppProvider({ children }) {
     };
   }, [selectedRoom.members]);
 
-  const members = useFirestore('users', usersCondition);
+  const members = useFirestoreCollection('users', usersCondition);
 
   const clearState = () => {
     setSelectedRoomId('');

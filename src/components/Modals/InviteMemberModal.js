@@ -4,7 +4,7 @@ import { AppContext } from '../../Context/AppProvider';
 import { debounce } from 'lodash';
 import { db } from '../../firebase/config';
 
-function DebounceSelect({
+function DebounceSelect ({
   fetchOptions,
   debounceTimeout = 300,
   curMembers,
@@ -56,7 +56,8 @@ function DebounceSelect({
   );
 }
 
-async function fetchUserList(search, curMembers) {
+async function fetchUserList (search, curMembers) {
+  console.log("serach", search?.toLowerCase())
   return db
     .collection('users')
     .where('keywords', 'array-contains', search?.toLowerCase())
@@ -74,7 +75,7 @@ async function fetchUserList(search, curMembers) {
     });
 }
 
-export default function InviteMemberModal() {
+export default function InviteMemberModal () {
   const {
     isInviteMemberVisible,
     setIsInviteMemberVisible,
@@ -110,7 +111,7 @@ export default function InviteMemberModal() {
   return (
     <div>
       <Modal
-        title='Mời thêm thành viên'
+        title='Invite more members'
         visible={isInviteMemberVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -120,9 +121,9 @@ export default function InviteMemberModal() {
           <DebounceSelect
             mode='multiple'
             name='search-user'
-            label='Tên các thành viên'
+            label='Names of members'
             value={value}
-            placeholder='Nhập tên thành viên'
+            placeholder="Enter member's name"
             fetchOptions={fetchUserList}
             onChange={(newValue) => setValue(newValue)}
             style={{ width: '100%' }}

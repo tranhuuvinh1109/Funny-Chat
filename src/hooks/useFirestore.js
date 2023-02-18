@@ -6,6 +6,7 @@ const useFirestore = (collection, condition) => {
 
   React.useEffect(() => {
     let collectionRef = db.collection(collection).orderBy('createdAt');
+    console.log(collectionRef)
     if (condition) {
       if (!condition.compareValue || !condition.compareValue.length) {
         // reset documents data

@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import Sidebar from './Sidebar';
 import ChatWindow from './ChatWindow';
 
-export default function ChatRoom() {
+export default function ChatRoom () {
   return (
     <div>
       <Row>

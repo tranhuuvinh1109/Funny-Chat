@@ -7,7 +7,7 @@ import AppProvider from './Context/AppProvider';
 import AddRoomModal from './components/Modals/AddRoomModal';
 import InviteMemberModal from './components/Modals/InviteMemberModal';
 
-function App() {
+function App () {
   return (
     <BrowserRouter>
       <AuthProvider>

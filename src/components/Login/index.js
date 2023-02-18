@@ -1,14 +1,13 @@
+import './login.css'
 import React from 'react';
-import { Row, Col, Button, Typography } from 'antd';
 import firebase, { auth } from '../../firebase/config';
 import { addDocument, generateKeywords } from '../../firebase/services';
-
-const { Title } = Typography;
+import toast from 'react-hot-toast';
 
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-export default function Login() {
+export default function Login () {
   const handleLogin = async (provider) => {
     const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
 
@@ -22,29 +21,34 @@ export default function Login() {
         keywords: generateKeywords(user.displayName?.toLowerCase()),
       });
     }
+    if (user) {
+      toast.success('Login successfully. Welcome ' + user._delegate.displayName);
+    }
   };
 
   return (
-    <div>
-      <Row justify='center' style={{ height: 800 }}>
-        <Col span={8}>
-          <Title style={{ textAlign: 'center' }} level={3}>
-            Fun Chat
-          </Title>
-          <Button
-            style={{ width: '100%', marginBottom: 5 }}
-            onClick={() => handleLogin(googleProvider)}
-          >
-            Đăng nhập bằng Google
-          </Button>
-          <Button
-            style={{ width: '100%' }}
-            onClick={() => handleLogin(fbProvider)}
-          >
-            Đăng nhập bằng Facebook
-          </Button>
-        </Col>
-      </Row>
+    <div className="form">
+      <div className="form__box">
+        <div className="form__left">
+          <div className="form__padding">
+            <img className="form__image" src="https://i.pinimg.com/originals/8b/44/51/8b4451665d6b2139e29f29b51ffb1829.png" />
+          </div>
+        </div>
+        <div className="form__right">
+          <div className="form__padding-right">
+            <h2>
+              Welcome to funny chat app
+            </h2>
+            <button onClick={() => handleLogin(googleProvider)} className="btn">
+              <i class="fa-brands fa-google"></i>
+              <span className="btn-span">
+                Login with Google
+              </span>
+            </button>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }

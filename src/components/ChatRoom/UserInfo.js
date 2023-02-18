@@ -18,7 +18,7 @@ const WrapperStyled = styled.div`
   }
 `;
 
-export default function UserInfo() {
+export default function UserInfo () {
   const {
     user: { displayName, photoURL },
   } = React.useContext(AuthContext);
@@ -40,7 +40,8 @@ export default function UserInfo() {
           auth.signOut();
         }}
       >
-        Đăng xuất
+        <i class="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: 4 }}></i>
+        Logout
       </Button>
     </WrapperStyled>
   );

@@ -7,6 +7,7 @@ import { AppContext } from '../../Context/AppProvider';
 import { addDocument } from '../../firebase/services';
 import { AuthContext } from '../../Context/AuthProvider';
 import useFirestore from '../../hooks/useFirestore';
+import { Toaster } from 'react-hot-toast';
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -70,7 +71,7 @@ const MessageListStyled = styled.div`
   overflow-y: auto;
 `;
 
-export default function ChatWindow() {
+export default function ChatWindow () {
   const { selectedRoom, members, setIsInviteMemberVisible } =
     useContext(AppContext);
   const {
@@ -116,6 +117,9 @@ export default function ChatWindow() {
   const messages = useFirestore('messages', condition);
 
   useEffect(() => {
+    if (messages) {
+      console.log('messages', messages)
+    }
     // scroll to bottom after message changed
     if (messageListRef?.current) {
       messageListRef.current.scrollTop =
@@ -125,6 +129,10 @@ export default function ChatWindow() {
 
   return (
     <WrapperStyled>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       {selectedRoom.id ? (
         <>
           <HeaderStyled>
@@ -140,7 +148,7 @@ export default function ChatWindow() {
                 type='text'
                 onClick={() => setIsInviteMemberVisible(true)}
               >
-                Mời
+                Invite
               </Button>
               <Avatar.Group size='small' maxCount={2}>
                 {members.map((member) => (
@@ -179,7 +187,7 @@ export default function ChatWindow() {
                 />
               </Form.Item>
               <Button type='primary' onClick={handleOnSubmit}>
-                Gửi
+                Send
               </Button>
             </FormStyled>
           </ContentStyled>
