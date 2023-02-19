@@ -57,7 +57,6 @@ function DebounceSelect ({
 }
 
 async function fetchUserList (search, curMembers) {
-  console.log("serach", search?.toLowerCase())
   return db
     .collection('users')
     .where('keywords', 'array-contains', search?.toLowerCase())

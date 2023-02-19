@@ -25,7 +25,6 @@ export default function AppProvider ({ children }) {
 
   const selectedRoom = React.useMemo(
     () => {
-      console.log('select', rooms.find((room) => room.id === selectedRoomId))
       return rooms.find((room) => room.id === selectedRoomId) || {}
     },
     [rooms, selectedRoomId]

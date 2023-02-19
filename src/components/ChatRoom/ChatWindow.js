@@ -117,9 +117,6 @@ export default function ChatWindow () {
   const messages = useFirestore('messages', condition);
 
   useEffect(() => {
-    if (messages) {
-      console.log('messages', messages)
-    }
     // scroll to bottom after message changed
     if (messageListRef?.current) {
       messageListRef.current.scrollTop =
